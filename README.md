@@ -10,7 +10,7 @@ SkyCast is a **premium, MSN-inspired weather dashboard** built with **Vanilla HT
 ---
 
 ## 🚀 Live Demo
-- **Demo:** _Add your deployed link here_
+- **Demo:** https://yashdhuppe04.github.io/PRODIGY_WD_05/
 - **GitHub Repo:** https://github.com/yashdhuppe04/PRODIGY_WD_05
 
 ---
