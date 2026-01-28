@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en" data-theme="ocean">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyCast — Premium Weather Dashboard</title>
+
+    <!-- Same-folder CSS -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Three.js UMD (window.THREE) -->
+    <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+  </head>
+
+  <body>
+    <div id="globe-bg" aria-hidden="true"></div>
+
+    <div class="page">
+      <header class="top-bar">
+        <div class="brand">
+          <div class="brand-mark">SC</div>
+          <div class="brand-text">
+            <div class="brand-name">SkyCast</div>
+            <div class="brand-tagline">Clean, modern weather at a glance</div>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <div class="pill" id="status-pill">Ready</div>
+          <button class="pill" id="theme-btn" type="button">Ocean</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="main-panel">
+          <section class="card card-now" id="now-card">
+            <div class="card-head">
+              <div>
+                <div class="section-label">Now</div>
+                <h1 class="location-name" id="location-name">—</h1>
+                <div class="condition-text" id="condition-text">
+                  Search a city to begin
+                </div>
+              </div>
+
+              <div class="now-right">
+                <div
+                  class="now-icon"
+                  id="now-icon"
+                  aria-label="Weather icon"
+                ></div>
+                <div class="temp-now" id="temp-now">—°</div>
+              </div>
+            </div>
+
+            <div class="card-sub">
+              <div class="sub-row">
+                <div class="muted" id="now-date">—</div>
+                <div class="hi-lo" id="hi-lo">H: —° • L: —°</div>
+              </div>
+            </div>
+
+            <div class="metrics-grid">
+              <div class="metric">
+                <div class="metric-k">Feels like</div>
+                <div class="metric-v" id="m-feels">—</div>
+              </div>
+              <div class="metric">
+                <div class="metric-k">Humidity</div>
+                <div class="metric-v" id="m-humidity">—</div>
+              </div>
+              <div class="metric">
+                <div class="metric-k">Wind</div>
+                <div class="metric-v" id="m-wind">—</div>
+              </div>
+              <div class="metric">
+                <div class="metric-k">Pressure</div>
+                <div class="metric-v" id="m-pressure">—</div>
+              </div>
+              <div class="metric">
+                <div class="metric-k">Visibility</div>
+                <div class="metric-v" id="m-visibility">—</div>
+              </div>
+              <div class="metric">
+                <div class="metric-k">Clouds</div>
+                <div class="metric-v" id="m-clouds">—</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="section-label">5-day forecast</div>
+            <div class="forecast-strip" id="forecast-strip"></div>
+          </section>
+
+          <section class="card">
+            <div class="section-label">Today’s trend</div>
+            <div class="hourly-trend" id="hourly-trend"></div>
+
+            <div class="mini-grid">
+              <section class="card card-mini">
+                <div class="section-label">Wind</div>
+                <div class="mini-row">
+                  <div class="wind-compass" aria-hidden="true">
+                    <div class="wind-arrow" id="wind-arrow"></div>
+                  </div>
+                  <div>
+                    <div class="mini-big" id="wind-speed">—</div>
+                    <div class="muted" id="wind-dir">—</div>
+                    <div class="muted" id="wind-phrase">—</div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="card card-mini">
+                <div class="section-label">Humidity</div>
+                <div class="mini-row">
+                  <div
+                    class="humidity-bars"
+                    id="humidity-bars"
+                    aria-hidden="true"
+                  ></div>
+                  <div>
+                    <div class="mini-big" id="humidity-value">—</div>
+                    <div class="muted" id="humidity-phrase">—</div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <div
+            class="error-main"
+            id="error-main"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </section>
+
+        <aside class="right-panel">
+          <section class="card">
+            <div class="section-label">Location</div>
+
+            <div class="field">
+              <label class="field-label" for="city-input">Search city</label>
+              <input
+                id="city-input"
+                class="input"
+                type="text"
+                placeholder="e.g., Pune, Nagpur, Mumbai"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="btn-row">
+              <button class="btn btn-primary" id="search-btn" type="button">
+                Search
+              </button>
+              <button class="btn btn-secondary" id="geo-btn" type="button">
+                Use my location
+              </button>
+            </div>
+
+            <div class="muted small">Tip: press Enter to search.</div>
+          </section>
+
+          <section class="card">
+            <div class="section-label">Insight</div>
+            <p class="insight-text" id="insight-text">
+              Fetch a location to see a comfort summary here.
+            </p>
+          </section>
+        </aside>
+      </main>
+
+      <div class="loading" id="loading" aria-hidden="true">
+        <div class="spinner" aria-hidden="true"></div>
+        <div class="loading-text">Loading…</div>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
